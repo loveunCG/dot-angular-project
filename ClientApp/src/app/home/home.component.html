@@ -1,0 +1,36 @@
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="exampleFormControlSelect2">Select a page:</label>
+        <select (change)="onChangePage($event.target.value)" class="form-control" id="exampleFormControlSelect2">
+          <option value="all">All</option>
+          <option *ngFor="let page of pageLists" value="{{page.id}}">{{page.text}}</option>
+        </select>
+      </div>
+      <div *ngFor="let page of pageLists" class="col-md-12">
+        <div *ngIf="pageFilter=='all'||pageFilter==page.id" class="col-lg-12 panel panel-default">
+          <h4><u>{{page.text}}</u>
+          </h4>
+          <div class="panel-body" [innerHTML]="page.content">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="exampleFormControlSelect2">Select a post:</label>
+        <select (change)="onChangePost($event.target.value)" class="form-control" id="exampleFormControlSelect2">
+          <option value="all">All</option>
+          <option *ngFor="let post of postLists" value="{{post.id}}">{{post.text}}</option>
+        </select>
+      </div>
+      <div *ngFor="let post of postLists" class="col-md-12 post-contianer">
+        <div *ngIf="postFilter=='all'||postFilter==post.id" class="col-lg-12 panel panel-default">
+          <h4><u>{{post.text}}</u>
+          </h4>
+          <div class="panel-body" [innerHTML]="post.content">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
