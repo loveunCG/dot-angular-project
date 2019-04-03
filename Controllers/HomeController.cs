@@ -60,5 +60,21 @@ namespace ngNet.Controllers
             string response = await client.GetStringAsync(url);
             return Json(JsonConvert.DeserializeObject(response));
         }
+
+        [HttpGet("[action]")]
+        public ServerConfig GetTimerInterval()
+        {
+
+            return (new ServerConfig
+            {
+                timerInterval = 1
+            });
+
+        }
+        public class ServerConfig
+        {
+            public int timerInterval { get; set; }
+
+        }
     }
 }
